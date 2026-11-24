@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #F6F0E6;
+  --color-cream-alt: #EFE7DA;
+  --color-white: #FFFFFF;
+  --color-beige: #DCCBB1;
+  --color-beige-light: #F0E6D8;
+  --color-gold: #B89A68;
+  --color-gold-hover: #9E8253;
+  --color-gold-dark: #8C6F3F;
+  --color-brown: #554536;
+  --color-brown-muted: #7A6A5A;
+  --color-brown-dark: #3F3327;
+  --color-gray-alt: #F4F4F2;
+  --color-wa: #25D366;
+  --color-wa-hover: #20ba5a;
+
+  --font-sans: var(--font-jakarta), system-ui, -apple-system, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-brown);
+  font-family: var(--font-sans);
+}
+
+/* Modern Islamic Arch */
+.arch-mask {
+  border-top-left-radius: 140px;
+  border-top-right-radius: 140px;
+}
+
+/* Infinite Marquee Animation */
+@keyframes marquee-scroll {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 32s linear infinite;
+}
+
+.animate-marquee-slow {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 45s linear infinite;
+}
+
+.marquee-container:hover .animate-marquee,
+.marquee-container:hover .animate-marquee-slow {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-marquee-slow {
+    animation: none;
+    overflow-x: auto;
+    width: 100%;
+  }
+}
+
+/* WhatsApp Pulse */
+@keyframes wa-pulse-ring {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
+  70% { transform: scale(1); box-shadow: 0 0 0 14px rgba(37, 211, 102, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+.animate-wa-pulse {
+  animation: wa-pulse-ring 2.5s infinite;
+}
+
+/* Hide scrollbar */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
